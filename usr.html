@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe CHECKER — AI or Human?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div id="root"></div>
+
+  <!-- React + Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    /* ── Animated score counter ─────────────────────────────────────────── */
+    function useCountUp(target, duration = 1000) {
+      const [display, setDisplay] = useState(0);
+      const frame = useRef(null);
+
+      useEffect(() => {
+        if (target === null) { setDisplay(0); return; }
+        const start     = performance.now();
+        const startVal  = 0;
+
+        const step = (now) => {
+          const elapsed  = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // ease-out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setDisplay(Math.round(startVal + (target - startVal) * eased));
+          if (progress < 1) frame.current = requestAnimationFrame(step);
+        };
+
+        frame.current = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(frame.current);
+      }, [target]);
+
+      return display;
+    }
+
+    /* ── Progress bar ───────────────────────────────────────────────────── */
+    function ProgressBar({ score, cls }) {
+      const [width, setWidth] = useState(0);
+
+      useEffect(() => {
+        const t = setTimeout(() => setWidth(score), 80);
+        return () => clearTimeout(t);
+      }, [score]);
+
+      return (
+        <>
+          <div className="progress-track">
+            <div
+              className={`progress-fill ${cls}`}
+              style={{ width: `${width}%` }}
+            />
+          </div>
+          <div className="progress-ticks">
+            <span className="progress-tick">0% HUMAN</span>
+            <span className="progress-tick">50%</span>
+            <span className="progress-tick">AI 100%</span>
+          </div>
+        </>
+      );
+    }
+
+    /* ── Spinner ────────────────────────────────────────────────────────── */
+    function Spinner() {
+      const msgs = [
+        'FETCHING HTML...',
+        'SCANNING PHRASES...',
+        'ANALYZING PATTERNS...',
+        'COMPUTING SCORE...',
+      ];
+      const [msgIdx, setMsgIdx] = useState(0);
+
+      useEffect(() => {
+        const iv = setInterval(() => {
+          setMsgIdx(i => (i + 1) % msgs.length);
+        }, 1100);
+        return () => clearInterval(iv);
+      }, []);
+
+      return (
+        <div className="loading-block">
+          <div className="scanner-line-wrap">
+            <div className="scanner-line" />
+          </div>
+          <div className="loading-text">{msgs[msgIdx]}</div>
+        </div>
+      );
+    }
+
+    /* ── Results ────────────────────────────────────────────────────────── */
+    function Results({ data }) {
+      const { score, verdict, reasons } = data;
+      const cls      = verdict === 'Likely AI' ? 'ai' : 'human';
+      const displayed = useCountUp(score, 900);
+
+      return (
+        <div className="results">
+          <div className="divider" />
+
+          <div className="score-row">
+            <div className={`score-number ${cls}`}>
+              {displayed}<span style={{ fontSize: '40%', opacity: 0.6 }}>%</span>
+            </div>
+            <div className={`verdict-badge ${cls}`}>
+              {verdict}
+            </div>
+          </div>
+
+          <ProgressBar score={score} cls={cls} />
+
+          <div className="reasons-label">▸ ANALYSIS OUTPUT</div>
+
+          {reasons.map((r, i) => (
+            <div
+              className="reason-item"
+              key={i}
+              style={{ animationDelay: `${i * 0.12}s` }}
+            >
+              <span className="reason-bullet">◆</span>
+              <span>{r}</span>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    /* ── Main App ───────────────────────────────────────────────────────── */
+    function App() {
+      const [url,     setUrl]     = useState('');
+      const [loading, setLoading] = useState(false);
+      const [result,  setResult]  = useState(null);
+      const [error,   setError]   = useState('');
+
+      const handleCheck = async () => {
+        if (!url.trim()) return;
+
+        setLoading(true);
+        setResult(null);
+        setError('');
+
+        try {
+          const res = await fetch('analyze.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: url.trim() }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok || data.error) {
+            throw new Error(data.error || `HTTP ${res.status}`);
+          }
+
+          setResult(data);
+        } catch (e) {
+          setError(e.message || 'Could not reach the server');
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      const handleKey = (e) => {
+        if (e.key === 'Enter' && !loading) handleCheck();
+      };
+
+      return (
+        <>
+          {/* Header */}
+          <div className="header">
+            <div className="header-eyebrow">◈ Diagnostic System v1.0</div>
+            <div className="header-title">VIBE CHECKER</div>
+            <div className="header-sub">
+              AI-generated or human-written? Enter a URL to find out.
+            </div>
+          </div>
+
+          {/* Card */}
+          <div className="card">
+            <div className="card-inner">
+
+              <label className="input-label" htmlFor="url-input">
+                ▸ TARGET URL
+              </label>
+              <div className="input-row">
+<input
+  id="url-input"
+  className="url-input"
+  type="url"
+  value={url}
+  placeholder="https://example.com"
+  onChange={(e) => setUrl(e.target.value)}
+  onKeyDown={handleKey}
+  disabled={loading}
+  autoComplete="off"
+  spellCheck="false"
+/>
+                <button
+                  className="btn"
+                  onClick={handleCheck}
+                  disabled={loading || !url.trim()}
+                >
+                  {loading ? '...' : 'CHECK VIBE'}
+                </button>
+              </div>
+
+              {error && <div className="error-bar">{error}</div>}
+
+              {loading && <Spinner />}
+
+              {result && !loading && <Results data={result} />}
+
+            </div>
+          </div>
+
+          <div className="footer">
+            VIBE CHECKER — PATTERN ANALYSIS ENGINE &nbsp;|&nbsp; NO DATA STORED
+          </div>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
