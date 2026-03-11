@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "index.php": {
+      "runtime": "vercel-community/php@0.0.8"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
+  ]
+}
