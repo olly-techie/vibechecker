@@ -38,16 +38,52 @@ $AI_PHRASES = [
 ];
 
 $BUILDER_SIGNATURES = [
-    'wix.com'=>'Wix','wixstatic'=>'Wix',
-    'squarespace.com'=>'Squarespace','squarespace'=>'Squarespace',
-    'webflow.com'=>'Webflow','webflow-io'=>'Webflow','webflow'=>'Webflow',
-    'wordpress'=>'WordPress','wp-content'=>'WordPress','wp-includes'=>'WordPress',
-    'shopify'=>'Shopify','myshopify'=>'Shopify',
-    'weebly'=>'Weebly','godaddy'=>'GoDaddy','elementor'=>'Elementor',
-    'et_pb'=>'Divi','framer.com'=>'Framer','framerusercontent'=>'Framer',
-    'carrd.co'=>'Carrd','site123'=>'Site123','bubble.io'=>'Bubble',
-    'webnode'=>'Webnode','strikingly'=>'Strikingly','tilda'=>'Tilda',
-    'notion.site'=>'Notion','super.so'=>'Super.so',
+// === AI-POWERED BUILDERS ===
+'lovable.app'=>'Lovable','lovableproject.com'=>'Lovable','gpt-engineer'=>'Lovable',
+'base44.app'=>'Base44','base44'=>'Base44',
+'bolt.new'=>'Bolt.new','stackblitz'=>'Bolt.new',
+'v0.dev'=>'v0 by Vercel','v0-user-next-app'=>'v0 by Vercel',
+'replit.com'=>'Replit','repl.co'=>'Replit','replit'=>'Replit',
+'cursor.sh'=>'Cursor','cursor-ai'=>'Cursor',
+'windsurf'=>'Windsurf','codeium'=>'Windsurf',
+'Claude Code'=>'Claude Code','claude-artifact'=>'Claude Code',
+'devin.ai'=>'Devin','cognition-labs'=>'Devin',
+'val.town'=>'Val.town',
+'glitch.me'=>'Glitch','glitch.com'=>'Glitch','cdn.glitch'=>'Glitch',
+'gemini-built'=>'Google AI Studio','firebase'=>'Firebase','firebaseapp.com'=>'Firebase','web.app'=>'Firebase',
+'idx.google'=>'Google Project IDX','project-idx'=>'Google Project IDX',
+
+// === HOSTING / DEPLOYMENT PLATFORMS (with generator signatures) ===
+'netlify.app'=>'Netlify','netlify'=>'Netlify',
+'vercel.app'=>'Vercel','_vercel'=>'Vercel',
+'github.io'=>'GitHub Pages','github-pages'=>'GitHub Pages',
+'pages.dev'=>'Cloudflare Pages','cloudflare-pages'=>'Cloudflare Pages',
+'render.com'=>'Render','onrender.com'=>'Render',
+'railway.app'=>'Railway',
+'fly.dev'=>'Fly.io',
+
+// === CMS / HEADLESS / SITE GENERATORS ===
+'gatsby'=>'Gatsby','gatsby-plugin'=>'Gatsby',
+'next.js'=>'Next.js','_next/static'=>'Next.js','__NEXT_DATA__'=>'Next.js',
+'nuxt'=>'Nuxt.js','__nuxt'=>'Nuxt.js',
+'astro'=>'Astro','astro-island'=>'Astro',
+'svelte'=>'SvelteKit','__sveltekit'=>'SvelteKit',
+'hugo'=>'Hugo','hugo-theme'=>'Hugo',
+'jekyll'=>'Jekyll','jekyll-theme'=>'Jekyll',
+'11ty'=>'Eleventy','eleventy'=>'Eleventy',
+'ghost'=>'Ghost','ghost.io'=>'Ghost',
+'contentful'=>'Contentful',
+'sanity.io'=>'Sanity',
+'strapi'=>'Strapi',
+'payload-cms'=>'Payload CMS',
+
+// === UI FRAMEWORKS (detectable via class patterns/scripts) ===
+'tailwindcss'=>'Tailwind CSS','tw-'=>'Tailwind CSS',
+'bootstrap'=>'Bootstrap','btn-primary'=>'Bootstrap',
+'mui'=>'Material UI','MuiBox'=>'Material UI',
+'chakra-ui'=>'Chakra UI',
+'shadcn'=>'shadcn/ui',
+'ant-design'=>'Ant Design','antd'=>'Ant Design',
 ];
 
 $TAILWIND_UTILITY_PATTERNS = [
