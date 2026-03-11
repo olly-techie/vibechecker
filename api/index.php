@@ -53,15 +53,6 @@ $BUILDER_SIGNATURES = [
 'gemini-built'=>'Google AI Studio','firebase'=>'Firebase','firebaseapp.com'=>'Firebase','web.app'=>'Firebase',
 'idx.google'=>'Google Project IDX','project-idx'=>'Google Project IDX',
 
-// === HOSTING / DEPLOYMENT PLATFORMS (with generator signatures) ===
-'netlify.app'=>'Netlify','netlify'=>'Netlify',
-'vercel.app'=>'Vercel','_vercel'=>'Vercel',
-'github.io'=>'GitHub Pages','github-pages'=>'GitHub Pages',
-'pages.dev'=>'Cloudflare Pages','cloudflare-pages'=>'Cloudflare Pages',
-'render.com'=>'Render','onrender.com'=>'Render',
-'railway.app'=>'Railway',
-'fly.dev'=>'Fly.io',
-
 // === CMS / HEADLESS / SITE GENERATORS ===
 'gatsby'=>'Gatsby','gatsby-plugin'=>'Gatsby',
 'next.js'=>'Next.js','_next/static'=>'Next.js','__NEXT_DATA__'=>'Next.js',
@@ -78,8 +69,6 @@ $BUILDER_SIGNATURES = [
 'payload-cms'=>'Payload CMS',
 
 // === UI FRAMEWORKS (detectable via class patterns/scripts) ===
-'tailwindcss'=>'Tailwind CSS','tw-'=>'Tailwind CSS',
-'bootstrap'=>'Bootstrap','btn-primary'=>'Bootstrap',
 'mui'=>'Material UI','MuiBox'=>'Material UI',
 'chakra-ui'=>'Chakra UI',
 'shadcn'=>'shadcn/ui',
