@@ -1074,5 +1074,8 @@ if ($preloadResult) {
 
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
+  
+  <script async="async" data-cfasync="false" src="https://pl28903630.effectivegatecpm.com/8c4a5bbb23fdb2e038d607eed5ed8a92/invoke.js"></script>
+<div id="container-8c4a5bbb23fdb2e038d607eed5ed8a92"></div>
 </body>
 </html>
