@@ -52,9 +52,19 @@ $BUILDER_SIGNATURES = [
 'glitch.me'=>'Glitch','glitch.com'=>'Glitch','cdn.glitch'=>'Glitch',
 'gemini-built'=>'Google AI Studio','firebase'=>'Firebase','firebaseapp.com'=>'Firebase','web.app'=>'Firebase',
 'idx.google'=>'Google Project IDX','project-idx'=>'Google Project IDX',
+'kimi.moonshot.cn'=>'Kimi',
+'moonshot.cn'=>'Kimi',
+'moonshot-ai'=>'Kimi',
+'kimi-ai'=>'Kimi',
+'kimi-chat'=>'Kimi',
+'kimi-generated'=>'Kimi',
+'kimi-dev'=>'Kimi',
+'moonshotai'=>'Kimi',
+'kimi.llm'=>'Kimi',
+'kimi-assistant'=>'Kimi',
 
 // === CMS / HEADLESS / SITE GENERATORS ===
-'gatsby'=>'Gatsby','gatsby-plugin'=>'Gatsby',
+/* 'gatsby'=>'Gatsby','gatsby-plugin'=>'Gatsby',
 'next.js'=>'Next.js','_next/static'=>'Next.js','__NEXT_DATA__'=>'Next.js',
 'nuxt'=>'Nuxt.js','__nuxt'=>'Nuxt.js',
 'astro'=>'Astro','astro-island'=>'Astro',
@@ -66,7 +76,7 @@ $BUILDER_SIGNATURES = [
 'contentful'=>'Contentful',
 'sanity.io'=>'Sanity',
 'strapi'=>'Strapi',
-'payload-cms'=>'Payload CMS',
+'payload-cms'=>'Payload CMS', */
 
 // === UI FRAMEWORKS (detectable via class patterns/scripts) ===
 'mui'=>'Material UI','MuiBox'=>'Material UI',
