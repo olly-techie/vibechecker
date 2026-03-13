@@ -1,14 +1,5 @@
 <?php
-// ══════════════════════════════════════════════════════════════════════════════
-// VIBE CHECKER — unified index.php
-// Routes:
-//   OPTIONS                  → CORS preflight
-//   POST (application/json)  → JSON analysis API  (used by the React fetch)
-//   GET                      → Full HTML page
-//                              ?url=<encoded>  server-side pre-render + OG tags
-// ══════════════════════════════════════════════════════════════════════════════
 
-// ── Signal libraries ──────────────────────────────────────────────────────────
 $AI_PHRASES = [
     'leverage','synergy','streamline','scalable','robust','seamless',
     'cutting-edge','state-of-the-art','innovative','comprehensive',
@@ -86,26 +77,60 @@ $BUILDER_SIGNATURES = [
 ];
 
 $TAILWIND_UTILITY_PATTERNS = [
-    'flex items-center justify-between','flex items-center justify-center',
-    'flex flex-col items-center','grid grid-cols-','mx-auto max-w-',
-    'px-4 py-','w-full max-w-',
-    'space-y-4','space-y-6','space-y-8','space-x-4','space-x-6',
-    'gap-4','gap-6','gap-8',
-    'text-4xl font-bold','text-3xl font-bold','text-2xl font-bold',
-    'text-xl font-semibold','text-lg font-medium',
-    'font-bold text-','font-semibold text-',
-    'bg-blue-600','bg-blue-500','bg-indigo-600',
-    'text-gray-600','text-gray-700','text-gray-900',
-    'hover:bg-blue-700','hover:bg-blue-600',
-    'rounded-lg shadow','rounded-xl shadow','rounded-full','shadow-lg','shadow-xl',
-    'container mx-auto','max-w-7xl mx-auto','max-w-6xl mx-auto',
-    'max-w-4xl mx-auto','max-w-3xl mx-auto',
-    'py-16','py-20','py-24',
-    'md:grid-cols-2','md:grid-cols-3','lg:grid-cols-3',
-    'sm:grid-cols-2','lg:grid-cols-4',
-    'transition-all duration-','transition duration-',
-    'hover:scale-','hover:shadow-',
+  'flex items-center',
+  'flex justify-',
+  'flex flex-col',
+  'grid grid-cols-',
+
+  'mx-auto max-w-',
+  'container mx-auto',
+
+  'w-full max-w-',
+
+  'px-',
+  'py-',
+  'p-',
+
+  'space-y-',
+  'space-x-',
+  'gap-',
+
+  'text-4xl font-',
+  'text-3xl font-',
+  'text-2xl font-',
+  'text-xl font-',
+  'text-lg font-',
+
+  'font-bold text-',
+  'font-semibold text-',
+
+  'bg-blue-',
+  'bg-indigo-',
+
+  'text-gray-',
+
+  'hover:bg-',
+
+  'rounded-',
+  'shadow',
+
+  'max-w-',
+  'mx-auto',
+
+  'py-',
+
+  'grid-cols-',
+  'md:grid-cols-',
+  'lg:grid-cols-',
+  'sm:grid-cols-',
+
+  'transition',
+  'duration-',
+
+  'hover:scale-',
+  'hover:shadow-'
 ];
+
 
 $AI_COMMENT_PATTERNS = [
     '<!-- hero','<!-- navigation','<!-- navbar','<!-- features',
